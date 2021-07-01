@@ -89,7 +89,7 @@ st.markdown(
 # Sidebar
 st.sidebar.title("Jina Meme Search")
 modality = st.sidebar.radio(
-    label="I want to search using...", options=("Image", "Text")
+    label="I want to search using...", options=("Text", "Image")
 )
 
 settings = st.sidebar.beta_expander(label="Settings", expanded=False)
@@ -111,8 +111,13 @@ This is an example meme search engine using the [Jina neural search framework](h
 
 - Backend: [Jina](https://github.com/jina-ai/jina/)
 - Frontend: [Streamlit](https://www.streamlit.io/)
+- Dataset: [ImgFlip memes](https://www.kaggle.com/abhishtagatya/imgflipscraped-memes-caption-dataset)
 
-[Visit the repo](https://github.com/alexcg1/jina-meme-search-example)
+### Repos
+
+- [Text backend](https://github.com/alexcg1/jina-meme-search-example/)
+- [Image backend](https://github.com/alexcg1/jina-meme-search-image-backend)
+- [Frontend](https://github.com/alexcg1/jina-meme-search-frontend)
 
 ---
 
@@ -126,6 +131,7 @@ if modality == "Text":
     query = st.text_input(label="Search for a meme based on caption")
 else:
     st.title("Search memes by similar image")
+    st.markdown("### Coming soon. Still a work in progress!")
     query = st.file_uploader("Upload image")
     if query is not None:
         image_data = query.read()
@@ -147,4 +153,5 @@ if st.button(label="Search"):
             matches = get_images(query=query, endpoint=endpoint, top_k=top_k)
 
         for cell, match in zip(all_cells, matches):
+            # st.write(match)
             cell.image("http:" + match["tags"]["image_url"])
