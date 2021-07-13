@@ -88,16 +88,16 @@ st.markdown(
 
 # Sidebar
 st.sidebar.title("Jina Meme Search")
-modality = st.sidebar.radio(
-    label="I want to search using...", options=("Text", "Image")
-)
+# modality = st.sidebar.radio(
+    # label="I want to search using...", options=("Text", "Image")
+# )
 
 settings = st.sidebar.beta_expander(label="Settings", expanded=False)
 with settings:
-    if modality == "Text":
-        endpoint = st.text_input(label="Endpoint", value=text_endpoint)
-    else:
-        endpoint = st.text_input(label="Endpoint", value=image_endpoint)
+    # if modality == "Text":
+    endpoint = st.text_input(label="Endpoint", value=text_endpoint)
+    # else:
+        # endpoint = st.text_input(label="Endpoint", value=image_endpoint)
 
     top_k = st.number_input(label="Top K", value=top_k, step=1)
 
@@ -116,7 +116,7 @@ This is an example meme search engine using the [Jina neural search framework](h
 ### Repos
 
 - [Text backend](https://github.com/alexcg1/jina-meme-search-example/)
-- [Image backend](https://github.com/alexcg1/jina-meme-search-image-backend)
+- [Image backend](https://github.com/alexcg1/jina-meme-search-image-backend) (WIP)
 - [Frontend](https://github.com/alexcg1/jina-meme-search-frontend)
 
 ---
@@ -126,16 +126,16 @@ This is an example meme search engine using the [Jina neural search framework](h
     unsafe_allow_html=True,
 )
 
-if modality == "Text":
-    st.title("Search memes by caption")
-    query = st.text_input(label="Search for a meme based on caption")
-else:
-    st.title("Search memes by similar image")
-    st.markdown("### Coming soon. Still a work in progress!")
-    query = st.file_uploader("Upload image")
-    if query is not None:
-        image_data = query.read()
-        query = encode_to_base64(image_data)
+# if modality == "Text":
+st.title("Search memes by caption")
+query = st.text_input(label="Search for a meme based on caption")
+# else:
+    # st.title("Search memes by similar image")
+    # st.markdown("### Coming soon. Still a work in progress!")
+    # query = st.file_uploader("Upload image")
+    # if query is not None:
+        # image_data = query.read()
+        # query = encode_to_base64(image_data)
 
 if st.button(label="Search"):
     if not query:
@@ -147,10 +147,10 @@ if st.button(label="Search"):
         cell7, cell8, cell9 = st.beta_columns(3)
         all_cells = [cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9]
 
-        if modality == "Text":
-            matches = get_data(query=query, endpoint=endpoint, top_k=top_k)
-        elif modality == "Image":
-            matches = get_images(query=query, endpoint=endpoint, top_k=top_k)
+        # if modality == "Text":
+        matches = get_data(query=query, endpoint=endpoint, top_k=top_k)
+        # elif modality == "Image":
+            # matches = get_images(query=query, endpoint=endpoint, top_k=top_k)
 
         for cell, match in zip(all_cells, matches):
             # st.write(match)
