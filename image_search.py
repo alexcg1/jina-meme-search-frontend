@@ -53,19 +53,19 @@ else:
     for filename in os.listdir("./samples"):
         sample_files.append(filename)
     random.shuffle(sample_files)
-    # sample_cells = st.columns(len(sample_files))
+    sample_cells = st.columns(len(sample_files))
 
-    # for cell, filename in zip(sample_cells, sample_files):
-        # meme_name = filename.split(".")[0]
-        # cell.image(f"samples/{filename}", width=128)
-        # if cell.button(f"{meme_name}", key=meme_name):
-            # matches = search_by_file(endpoint, top_k, f"samples/{filename}")
+    for cell, filename in zip(sample_cells, sample_files):
+        meme_name = filename.split(".")[0]
+        cell.image(f"samples/{filename}", width=128)
+        if cell.button(f"{meme_name}", key=meme_name):
+            matches = search_by_file(endpoint, top_k, f"samples/{filename}")
 
-    sample_meme = sample_files[0]
-    meme_name = sample_meme.split(".")[0]
-    st.image(f"samples/{sample_meme}", width=256)
-    if st.button(f"{meme_name}", key=meme_name):
-        matches = search_by_file(endpoint, top_k, f"samples/{sample_meme}")
+    # sample_meme = sample_files[0]
+    # meme_name = sample_meme.split(".")[0]
+    # st.image(f"samples/{sample_meme}", width=256)
+    # if st.button(f"{meme_name}", key=meme_name):
+        # matches = search_by_file(endpoint, top_k, f"samples/{sample_meme}")
         # if media_type == "Image" or media_type == "Video":
 # Set up grid
 cell1, cell2, cell3 = st.columns(3)
