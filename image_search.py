@@ -32,7 +32,6 @@ st.title("Search memes by image")
     # query = st.text_input("Search phrase")
     # search_fn = search_by_text
 # else:
-st.subheader("Upload an image...")
 upload_cell, preview_cell =  st.columns([12, 1])
 query = upload_cell.file_uploader("Upload file")
 search_fn = search_by_file
@@ -60,7 +59,6 @@ else:
             cell.image(f"samples/{filename}", width=128)
             if cell.button(f"{meme_name}"):
                 matches = search_by_file(endpoint, top_k, f"samples/{filename}")
-                del sample_box
 
         # if media_type == "Image" or media_type == "Video":
 # Set up grid
