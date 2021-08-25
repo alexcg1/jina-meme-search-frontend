@@ -48,11 +48,20 @@ if query:
 
 # Sample image list
 else:
+<<<<<<< HEAD
     sample_files = []
     for filename in os.listdir("./samples"):
         sample_files.append(filename)
     sample_image = random.choice(sample_files)
     meme_name = sample_image.split(".")[0]
+=======
+    sample_box = st.expander(label="Search from a sample", expanded=True)
+    with sample_box:
+        sample_cells = st.columns(4)
+        sample_files = []
+        for filename in os.listdir("./samples"):
+            sample_files.append(filename)
+>>>>>>> parent of 77a9c11 (feat: dynamic expand sample box)
 
     st.header("...search from an existing meme")
     st.image(f"samples/{sample_image}", width=128)
