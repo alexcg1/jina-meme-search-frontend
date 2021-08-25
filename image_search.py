@@ -42,7 +42,7 @@ if st.button(label="Search"):
     if not query:
         st.markdown("Please enter a query")
     else:
-        matches = search_by_file(endpoint, top_k, uploaded_image)
+        matches = search_by_file(endpoint, top_k, "/tmp/query.png")
 
         # if media_type == "Image" or media_type == "Video":
     # Set up grid
