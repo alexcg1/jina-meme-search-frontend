@@ -81,7 +81,7 @@ def search_by_file(endpoint, top_k, filename="query.png"):
     return matches
 
 
-def create_temp_file(query, output_file="query.png"):
+def create_temp_file(query, output_file="/tmp/query.png"):
     data = query.read()
 
     with open(output_file, "wb") as file:
