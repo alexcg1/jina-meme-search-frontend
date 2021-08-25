@@ -33,8 +33,8 @@ st.title("Search memes by image")
     # query = st.text_input("Search phrase")
     # search_fn = search_by_text
 # else:
-st.header("Search by file...")
-upload_cell, preview_cell =  st.columns([2, 1])
+header_cell, upload_cell, preview_cell =  st.columns([4, 7, 1])
+header_cell.header("Search by file...")
 query = upload_cell.file_uploader("Upload file")
 search_fn = search_by_file
 if query:
@@ -54,9 +54,10 @@ else:
     sample_image = random.choice(sample_files)
     meme_name = sample_image.split(".")[0]
 
-    st.header("...search from an existing meme")
-    st.image(f"samples/{sample_image}", width=128)
-    if st.button(f"{meme_name}"):
+    header_cell, sample_preview = st.columns([4, 8])
+    header_cell.header("...search from an existing meme")
+    sample_preview.image(f"samples/{sample_image}", width=128)
+    if sample_preview.button(f"{meme_name}"):
         matches = search_by_file(endpoint, top_k, f"samples/{sample_image}")
     # sample_box = st.expander(label="Search from a sample", expanded=True)
 
