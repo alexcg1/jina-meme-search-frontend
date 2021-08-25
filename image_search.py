@@ -54,7 +54,7 @@ else:
     sample_image = random.choice(sample_files)
     meme_name = sample_image.split(".")[0]
 
-    header_cell, sample_preview = st.columns[4, 8]
+    header_cell, sample_preview = st.columns([4, 8])
     header_cell.header("...search from an existing meme")
     sample_preview.image(f"samples/{sample_image}", width=128)
     if sample_preview.button(f"{meme_name}"):
