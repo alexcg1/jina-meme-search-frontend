@@ -48,10 +48,10 @@ if query:
 else:
     sample_box = st.expander(label="Search from a sample", expanded=True)
     with sample_box:
-        sample_cells = st.columns(4)
         sample_files = []
         for filename in os.listdir("./samples"):
             sample_files.append(filename)
+        sample_cells = st.columns(len(sample_files))
 
         for cell, filename in zip(sample_cells, sample_files):
             meme_name = filename.split(".")[0]
