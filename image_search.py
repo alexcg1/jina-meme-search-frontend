@@ -46,18 +46,16 @@ if query:
 
 # Sample image list
 else:
-    sample_box = st.expander(label="Search from a sample", expanded=True)
-    with sample_box:
-        sample_files = []
-        for filename in os.listdir("./samples"):
-            sample_files.append(filename)
-        sample_cells = st.columns(len(sample_files))
+    sample_files = []
+    for filename in os.listdir("./samples"):
+        sample_files.append(filename)
+    sample_cells = st.columns(len(sample_files))
 
-        for cell, filename in zip(sample_cells, sample_files):
-            meme_name = filename.split(".")[0]
-            cell.image(f"samples/{filename}", width=128)
-            if cell.button(f"{meme_name}"):
-                matches = search_by_file(endpoint, top_k, f"samples/{filename}")
+    for cell, filename in zip(sample_cells, sample_files):
+        meme_name = filename.split(".")[0]
+        cell.image(f"samples/{filename}", width=128)
+        if cell.button(f"{meme_name}"):
+            matches = search_by_file(endpoint, top_k, f"samples/{filename}")
 
         # if media_type == "Image" or media_type == "Video":
 # Set up grid
