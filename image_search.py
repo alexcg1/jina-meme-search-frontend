@@ -53,7 +53,6 @@ else:
     for filename in os.listdir("./samples"):
         sample_files.append(filename)
     random.shuffle(sample_files)
-    sample_files = sample_files[:2]
     sample_cells = st.columns(len(sample_files))
 
     for cell, filename in zip(sample_cells, sample_files):
