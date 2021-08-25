@@ -59,10 +59,10 @@ def search_by_text(query: str, endpoint: str, top_k: int) -> dict:
     return matches
 
 
-def search_by_file(top_k, endpoint, filename="query.png"):
+def search_by_file(endpoint, top_k, filename="query.png"):
+    filetype = magic.from_file(filename, mime=True)
     filename = os.path.abspath(filename)
 
-    filetype = magic.from_file(filename, mime=True)
 
     data = (
         '{"parameters": {"top_k": '
