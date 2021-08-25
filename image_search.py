@@ -33,7 +33,7 @@ st.title("Search memes by image")
     # query = st.text_input("Search phrase")
     # search_fn = search_by_text
 # else:
-st.heaader("Search from your own image...")
+st.header("Search from your own image...")
 upload_cell, preview_cell =  st.columns([12, 1])
 query = upload_cell.file_uploader("Upload file")
 search_fn = search_by_file
