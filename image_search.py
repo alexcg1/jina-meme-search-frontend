@@ -47,7 +47,7 @@ if query:
 
 # Sample image list
 else:
-    sample_box = st.expander()
+    sample_box = st.expander(label="Search from a sample", expanded=True)
     with sample_box:
         st.subheader("...or search similar memes")
         sample_cells = st.columns(4)
