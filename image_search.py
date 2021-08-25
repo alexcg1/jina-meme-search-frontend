@@ -47,7 +47,8 @@ if query:
 
 # Sample image list
 else:
-    if not matches:
+    sample_box = st.expander()
+    with sample_box:
         st.subheader("...or search similar memes")
         sample_cells = st.columns(4)
         sample_files = []
@@ -59,6 +60,7 @@ else:
             cell.image(f"samples/{filename}", width=128)
             if cell.button(f"{meme_name}"):
                 matches = search_by_file(endpoint, top_k, f"samples/{filename}")
+                del sample_box
 
         # if media_type == "Image" or media_type == "Video":
 # Set up grid
