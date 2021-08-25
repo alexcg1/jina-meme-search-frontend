@@ -53,6 +53,7 @@ else:
     for filename in os.listdir("./samples"):
         sample_files.append(filename)
     random.shuffle(sample_files)
+    sample_files = sample_files[:2]
     sample_cells = st.columns(len(sample_files))
 
     for cell, filename in zip(sample_cells, sample_files):
@@ -66,7 +67,7 @@ else:
     # st.image(f"samples/{sample_meme}", width=256)
     # if st.button(f"{meme_name}", key=meme_name):
         # matches = search_by_file(endpoint, top_k, f"samples/{sample_meme}")
-        # if media_type == "Image" or media_type == "Video":
+
 # Set up grid
 cell1, cell2, cell3 = st.columns(3)
 cell4, cell5, cell6 = st.columns(3)
