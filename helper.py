@@ -114,9 +114,6 @@ def search_by_file(endpoint, top_k, filename="query.png"):
     response = requests.post(endpoint, headers=headers, data=data)
     content = response.json()
     matches = content["data"]["docs"][0]["matches"]
-    print(data)
-    print(content)
-    print(endpoint)
 
     return matches
 
