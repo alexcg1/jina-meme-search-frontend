@@ -6,11 +6,6 @@ repo_banner_file = os.path.abspath("./eah.svg")
 
 class UI:
 
-    repo_banner = """ ![](https://raw.githubusercontent.com/alexcg1/jina-meme-search-frontend/main/repo_banner.svg) """
-    repo_banner = """<a href="https://github.com/jina-ai/jina/"><img src="https://raw.githubusercontent.com/alexcg1/jina-meme-search-frontend/main/repo_banner.svg"></a>"""
-    # repo_banner = """
-# ### Like what you see?
-    # """
     repo_banner = """
 <div xmlns="http://www.w3.org/1999/xhtml" style="background-color: #fffbdd; text-align:center; margin-left: auto; margin-right: auto; border-radius: 6px; border-style: solid; border-width: 1px; border-color: #b0880033; color: #24292e; width: 100%">
             <style>

@@ -42,7 +42,7 @@ li_items = "".join(
     for t in tabs
 )
 tabs_html = f"""
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs mt-4">
     {li_items}
     </ul>
 """
