@@ -11,6 +11,20 @@ class UI:
     # repo_banner = """
 # ### Like what you see?
     # """
+    repo_banner = """
+<div xmlns="http://www.w3.org/1999/xhtml" style="background-color: #fffbdd; text-align:center; margin-left: auto; margin-right: auto; border-radius: 6px; border-style: solid; border-width: 1px; border-color: #b0880033; color: #24292e; width: 100%">
+            <style>
+            p {
+                font-family: sans-serif;
+                font-size: max(1em, 12px);
+            }
+            </style>
+            <p>
+                <h3>🎉 Like what you see?</h3>
+                Check out <a href="https://github.com/jina-ai/jina/" target="_blank">Jina's GitHub repo</a> to build your own search for <b>any kind of data</b>
+            </p>
+        </div>
+    """
 
     text_block = """
 
