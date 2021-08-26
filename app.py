@@ -94,8 +94,6 @@ elif active_tab == "Search by subject/caption":
     for text in sample_texts:
         if st.button(text):
             matches = search_by_text(text, text_endpoint, top_k)
-elif active_tab == "Contact":
-    st.write("If you'd like to contact me, then please don't.")
 else:
     st.error("Something has gone terribly wrong.")
 
