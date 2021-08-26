@@ -115,7 +115,6 @@ st.sidebar.markdown(UI.image_repo_block, unsafe_allow_html=True)
     # text_endpoint = st.text_input(label="Text endpoint", value=text_endpoint, key="text_endpoint")
     # top_k = st.number_input(label="Top K", value=top_k, step=1)
 
-print(matches)
 cell1, cell2, cell3 = st.columns(3)
 cell4, cell5, cell6 = st.columns(3)
 cell7, cell8, cell9 = st.columns(3)
