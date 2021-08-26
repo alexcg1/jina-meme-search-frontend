@@ -17,7 +17,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 query_params = st.experimental_get_query_params()
-tabs = ["Search by image", "Search by subject/caption"]
+tabs = ["Search by image", "Search by text"]
 if "tab" in query_params:
     active_tab = query_params["tab"][0]
 else:
