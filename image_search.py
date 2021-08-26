@@ -12,6 +12,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+st.markdown(UI.repo_banner, unsafe_allow_html=True)
 # Sidebar
 st.sidebar.markdown(UI.text_block, unsafe_allow_html=True)
 st.sidebar.markdown(UI.image_repo_block, unsafe_allow_html=True)
