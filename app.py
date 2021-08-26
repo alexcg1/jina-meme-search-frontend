@@ -78,7 +78,7 @@ if active_tab == "Search by image":
             if cell.button(f"{meme_name}", key=meme_name):
                 matches = search_by_file(image_endpoint, top_k, f"samples/{filename}")
 
-elif active_tab == "Search by subject/caption":
+elif active_tab == "Search by text":
     media_type = "Text"
     st.subheader("Search with a meme subject and/or caption...")
     query = st.text_input("Meme subject or caption", key="text_search_box")
