@@ -15,8 +15,8 @@ class UI:
             }
             </style>
             <p>
-                <h3>🎉 Like what you see?</h3>
-                Check out <a href="https://github.com/jina-ai/jina/" target="_blank">Jina's GitHub repo</a> to build your own search for <b>any kind of data</b>
+                <h3>⭐ Like what you see?</h3>
+                Star <a href="https://github.com/jina-ai/jina/" target="_blank">Jina's GitHub repo</a> and join our <a href="https://slack.jina.ai">Slack community</a>
             </p>
         </div>
     """
