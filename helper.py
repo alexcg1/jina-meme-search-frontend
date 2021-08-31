@@ -15,7 +15,7 @@ class UI:
             }
             </style>
             <p>
-                <h3>⭐ Like what you see?</h3>
+                <h3 style="color:#000">⭐ Like what you see?</h3>
                 Star <a href="https://github.com/jina-ai/jina/" target="_blank">Jina's GitHub repo</a> and join our <a href="https://slack.jina.ai">Slack community</a>
             </p>
         </div>
