@@ -23,7 +23,7 @@ query_params = st.experimental_get_query_params()
 # Top section
 st.markdown(UI.repo_banner, unsafe_allow_html=True)
 
-tabs = ["Search by image", "Search by text"]
+tabs = ["Search by image", "Search by text", "Dude, this meme search suuuuucks"]
 if "tab" in query_params:
     active_tab = query_params["tab"][0]
 else:
@@ -65,7 +65,7 @@ if active_tab == "Search by image":
                 matches = search_by_file(image_endpoint, top_k, "/tmp/query.png")
 
     # Sample image list
-    else:
+    elif active_tab == "Search by text":
         st.header("...or search from an existing meme")
         sample_files = []
         for filename in os.listdir("./samples"):
@@ -77,7 +77,6 @@ if active_tab == "Search by image":
             cell.image(f"samples/{filename}", width=128)
             if cell.button(f"{meme_name}", key=meme_name):
                 matches = search_by_file(image_endpoint, top_k, f"samples/{filename}")
-
 elif active_tab == "Search by text":
     media_type = "Text"
     st.subheader("Search with a meme subject and/or caption...")
@@ -95,8 +94,30 @@ elif active_tab == "Search by text":
         if st.button(text):
             matches = search_by_text(text, text_endpoint, top_k)
 else:
-    st.error("Something has gone terribly wrong.")
+    st.markdown(
+        """
+### So, why I can't I see <this meme>?
 
+A couple of answers to that question!
+
+1. The [dataset we're using](https://www.kaggle.com/abhishtagatya/imgflipscraped-memes-caption-dataset) only contains so many "meme types"
+2. This time round we only indexed 1,000 memes from the shuffled dataset. So there's a chance that even if a meme exists in the dataset, it didn't get picked up in our subset.
+
+### So just index more memes, duh!
+We didn't expect this to explode so soon. We're doing this as we speak.
+
+### Ugh, just use a better dataset
+We use this dataset because it has rich metadata. That lets use use both text search and image search (because the text search searches the JSON metadata that includes the captions)
+
+### My meme search is much better!
+
+Awesome! We threw this together quickly and didn't expect it to blow up. With more time we would use a better image encoder (like CLIP) and probably throw in some OCR too.
+
+### How can I contact you to tell you that you suck to your stupid face?
+
+Go to [Jina's Slack](https://slack.jina.ai) and vent away on #your-meme-search-sucks channel
+"""
+    )
 
 # Results area
 cell1, cell2, cell3 = st.columns(3)
