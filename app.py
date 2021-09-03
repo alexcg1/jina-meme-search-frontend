@@ -103,6 +103,8 @@ A couple of answers to that question!
 1. The [dataset we're using](https://www.kaggle.com/abhishtagatya/imgflipscraped-memes-caption-dataset) only contains so many "meme types"
 2. This time round we only indexed 1,000 memes from the shuffled dataset. So there's a chance that even if a meme exists in the dataset, it didn't get picked up in our subset.
 
+Update: Now it's 10,000 memes for text search. Image search still at 1,000 for now.
+
 ### So just index more memes, duh!
 We didn't expect this to explode so soon. We're doing this as we speak.
 
