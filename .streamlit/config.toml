@@ -1,9 +1,10 @@
 [server]
 
-address = "examples.jina.ai"
+#address = "examples.jina.ai"
 baseUrlPath = "/memes"
 port = 8501
 maxUploadSize = 5
+enableCORS = true
 
 [theme]
 primaryColor = "#008181"
