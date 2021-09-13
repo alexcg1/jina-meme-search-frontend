@@ -1,0 +1,8 @@
+[server]
+
+baseUrlPath = "/memes"
+port = 8501
+maxUploadSize = 5
+
+[theme]
+primaryColor = "#008181"
