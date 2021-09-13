@@ -1,5 +1,5 @@
 base_url = "https://examples.jina.ai/memes"
-base_url = "http://3.136.154.229:8501/"
+base_url = "http://3.136.154.229:8501/memes"
 
 # Text search
 text_endpoint = "http://examples.jina.ai:45678/search"
