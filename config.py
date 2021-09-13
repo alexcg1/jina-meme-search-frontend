@@ -1,4 +1,4 @@
-server_url = "https://examples.jina.ai"
+base_url = "https://examples.jina.ai/memes"
 
 # Text search
 text_endpoint = "http://examples.jina.ai:45678/search"

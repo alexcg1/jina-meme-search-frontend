@@ -1,7 +1,7 @@
 import streamlit as st
 import random
 import os
-from config import image_endpoint, text_endpoint, top_k, score_filter, server_url
+from config import image_endpoint, text_endpoint, top_k, score_filter, base_url
 from helper import search_by_file, search_by_text, UI, create_temp_file
 
 endpoint = image_endpoint
@@ -36,7 +36,7 @@ if active_tab not in tabs:
 li_items = "".join(
     f"""
     <li class="nav-item">
-        <a class="nav-link{' active' if t==active_tab else ''}" href="{server_url}/?tab={t}">{t}</a>
+        <a class="nav-link{' active' if t==active_tab else ''}" href="{base_url}/?tab={t}">{t}</a>
     </li>
     """
     for t in tabs
