@@ -1,6 +1,6 @@
 [server]
 
-baseUrlPath = "/memes"
+baseUrlPath = "https://examples.jina.ai/memes"
 port = 8501
 maxUploadSize = 5
 
