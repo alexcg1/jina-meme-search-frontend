@@ -4,7 +4,7 @@
 baseUrlPath = "/memes"
 port = 8501
 maxUploadSize = 5
-enableCORS = true
+#enableCORS = true
 
 [theme]
 primaryColor = "#008181"
