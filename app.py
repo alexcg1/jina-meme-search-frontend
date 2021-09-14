@@ -1,7 +1,7 @@
 import streamlit as st
 import random
 import os
-from config import image_endpoint, text_endpoint, top_k, score_filter, base_url
+from config import image_endpoint, text_endpoint, top_k
 from helper import search_by_file, search_by_text, UI, create_temp_file
 
 endpoint = image_endpoint
@@ -36,7 +36,7 @@ if active_tab not in tabs:
 li_items = "".join(
     f"""
     <li class="nav-item">
-        <a class="nav-link{' active' if t==active_tab else ''}" href="{base_url}/?tab={t}">{t}</a>
+        <a class="nav-link{' active' if t==active_tab else ''}" href="/?tab={t}">{t}</a>
     </li>
     """
     for t in tabs
@@ -121,27 +121,17 @@ Go to [Jina's Slack](https://slack.jina.ai) and vent away on #your-meme-search-s
 """
     )
 
-# Check for quality of top result (if top is bad, others bad too)
-if matches:
-    score = matches[0]['scores']['cosine']['value']
-    if score > score_filter:
-        print("Bad match!foo")
-        st.markdown("## No matches found")
+# Results area
+cell1, cell2, cell3 = st.columns(3)
+cell4, cell5, cell6 = st.columns(3)
+cell7, cell8, cell9 = st.columns(3)
+all_cells = [cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9]
+
+for cell, match in zip(all_cells, matches):
+    if media_type == "Text":
+        cell.image("http:" + match["tags"]["image_url"])
     else:
-
-        # Results area
-        cell1, cell2, cell3 = st.columns(3)
-        cell4, cell5, cell6 = st.columns(3)
-        cell7, cell8, cell9 = st.columns(3)
-        all_cells = [cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9]
-
-        for cell, match in zip(all_cells, matches):
-            score = match['scores']['cosine']['value']
-            if media_type == "Text":
-                cell.image("http:" + match["tags"]["image_url"])
-            else:
-                cell.image(match["tags"]["uri_absolute"], use_column_width="auto")
-                cell.markdown(score)
+        cell.image(match["tags"]["uri_absolute"], use_column_width="auto")
 
 # Sidebar
 st.sidebar.markdown(UI.text_block, unsafe_allow_html=True)
