@@ -13,48 +13,21 @@ st.markdown(
     body=UI.css,
     unsafe_allow_html=True,
 )
+st.write('<style>div.row-widget.stRadio > div{flex-direction:row; margin-left:auto; margin-right: auto; align: center}</style>', unsafe_allow_html=True)
+# Sidebar
+st.sidebar.header("Media type")
+st.sidebar.markdown(UI.text_block, unsafe_allow_html=True)
+st.sidebar.markdown(UI.image_repo_block, unsafe_allow_html=True)
 
-st.markdown(
-    '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">',
-    unsafe_allow_html=True,
-)
-query_params = st.experimental_get_query_params()
-
-# Top section
 st.markdown(UI.repo_banner, unsafe_allow_html=True)
 
-tabs = ["Search by image", "Search by text", "Dude, this meme search suuuuucks"]
-if "tab" in query_params:
-    active_tab = query_params["tab"][0]
-else:
-    active_tab = "Search by image"
+st.header("What do you want to search with?")
+media_type = st.radio("", ["Text", "Image", "Nothing. This meme search sucks"])
 
-if active_tab not in tabs:
-    st.experimental_set_query_params(tab="Search by image")
-    active_tab = "Search by image"
-
-li_items = "".join(
-    f"""
-    <li class="nav-item">
-        <a class="nav-link{' active' if t==active_tab else ''}" href="/?tab={t}">{t}</a>
-    </li>
-    """
-    for t in tabs
-)
-tabs_html = f"""
-    <ul class="nav nav-tabs mt-4">
-    {li_items}
-    </ul>
-"""
-
-st.markdown(tabs_html, unsafe_allow_html=True)
-st.markdown("<br>", unsafe_allow_html=True)
-
-if active_tab == "Search by image":
-    media_type = "Image"
-    st.header("Search from your own image...")
+if media_type == "Image":
+    # st.header("Search from your own image...")
     upload_cell, preview_cell = st.columns([12, 1])
-    query = upload_cell.file_uploader("Upload file")
+    query = upload_cell.file_uploader("")
     if query:
         uploaded_image = create_temp_file(query)
         preview_cell.image(uploaded_image)
@@ -65,22 +38,21 @@ if active_tab == "Search by image":
                 matches = search_by_file(image_endpoint, top_k, "/tmp/query.png")
 
     # Sample image list
-    elif active_tab == "Search by text":
-        st.header("...or search from an existing meme")
-        sample_files = []
-        for filename in os.listdir("./samples"):
-            sample_files.append(filename)
-        sample_cells = st.columns(len(sample_files))
+    # elif media_type == "Text":
+        # st.header("...or search from an existing meme")
+        # sample_files = []
+        # for filename in os.listdir("./samples"):
+            # sample_files.append(filename)
+        # sample_cells = st.columns(len(sample_files))
 
-        for cell, filename in zip(sample_cells, sample_files):
-            meme_name = filename.split(".")[0]
-            cell.image(f"samples/{filename}", width=128)
-            if cell.button(f"{meme_name}", key=meme_name):
-                matches = search_by_file(image_endpoint, top_k, f"samples/{filename}")
-elif active_tab == "Search by text":
-    media_type = "Text"
-    st.subheader("Search with a meme subject and/or caption...")
-    query = st.text_input("Meme subject or caption", key="text_search_box")
+        # for cell, filename in zip(sample_cells, sample_files):
+            # meme_name = filename.split(".")[0]
+            # cell.image(f"samples/{filename}", width=128)
+            # if cell.button(f"{meme_name}", key=meme_name):
+                # matches = search_by_file(image_endpoint, top_k, f"samples/{filename}")
+elif media_type == "Text":
+    # st.subheader("Search with a meme subject and/or caption...")
+    query = st.text_input("", key="text_search_box")
     search_fn = search_by_text
     if st.button("Search", key="text_search"):
         matches = search_by_text(query, text_endpoint, top_k)
@@ -133,6 +105,3 @@ for cell, match in zip(all_cells, matches):
     else:
         cell.image(match["tags"]["uri_absolute"], use_column_width="auto")
 
-# Sidebar
-st.sidebar.markdown(UI.text_block, unsafe_allow_html=True)
-st.sidebar.markdown(UI.image_repo_block, unsafe_allow_html=True)
