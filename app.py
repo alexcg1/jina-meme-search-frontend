@@ -1,7 +1,7 @@
 import streamlit as st
 import random
 import os
-from config import image_endpoint, text_endpoint, top_k
+from config import image_endpoint, text_endpoint, top_k, images_path
 from helper import search_by_file, search_by_text, UI, create_temp_file
 
 endpoint = image_endpoint
@@ -103,5 +103,6 @@ for cell, match in zip(all_cells, matches):
     if media_type == "Text":
         cell.image("http:" + match["tags"]["image_url"])
     else:
-        cell.image(match["tags"]["uri_absolute"], use_column_width="auto")
+        # cell.image(match["tags"]["uri_absolute"], use_column_width="auto")
+        cell.image(match["tags"]["uri"], use_column_width="auto")
 
